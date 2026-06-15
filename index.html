@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>邹俊锋 — 个人主页</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">ZJF</a>
+      <div class="nav-links">
+        <a href="#about">关于</a>
+        <a href="#experience">经历</a>
+        <a href="#projects">作品</a>
+        <a href="#skills">技能</a>
+        <a href="#contact">联系</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="菜单">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="closeMenu()">关于</a>
+    <a href="#experience" onclick="closeMenu()">经历</a>
+    <a href="#projects" onclick="closeMenu()">作品</a>
+    <a href="#skills" onclick="closeMenu()">技能</a>
+    <a href="#contact" onclick="closeMenu()">联系</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-greeting fade-up">你好，我是</p>
+      <h1 class="hero-name fade-up" style="animation-delay: 0.1s">邹俊锋</h1>
+      <p class="hero-title fade-up" style="animation-delay: 0.2s">内容策划 · 社群运营 · 数据驱动增长</p>
+      <p class="hero-desc fade-up" style="animation-delay: 0.3s">汕头大学智能建造专业在读，擅长通过内容策划与用户运营撬动增长。<br>拥有 10 万+ 爆款内容打造、30 万+ 直播全案策划及单月付费转化 112 人的实战经验。</p>
+      <div class="hero-cta fade-up" style="animation-delay: 0.4s">
+        <a href="#experience" class="btn btn-primary">查看经历</a>
+        <a href="#contact" class="btn btn-ghost">联系我</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint fade-up" style="animation-delay: 0.8s">
+      <span>向下滚动</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">关于我</span>
+        <h2 class="section-title fade-up">用数据说话，<br>用内容创造价值。</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-card fade-up">
+          <div class="about-number">10万+</div>
+          <div class="about-card-label">单篇最高阅读量</div>
+          <p class="about-card-desc">原创内容登上教育部"学习强国"平台首页推荐</p>
+        </div>
+        <div class="about-card fade-up" style="animation-delay: 0.1s">
+          <div class="about-number">30万+</div>
+          <div class="about-card-label">直播累计观看</div>
+          <p class="about-card-desc">全案策划招生系列直播，单场最高同时在线 2000+ 人</p>
+        </div>
+        <div class="about-card fade-up" style="animation-delay: 0.2s">
+          <div class="about-number">112</div>
+          <div class="about-card-label">单月付费转化</div>
+          <p class="about-card-desc">独立运营 1500+ 用户社群，通过精细化策略实现高效转化</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="section section-alt" id="experience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">经历</span>
+        <h2 class="section-title fade-up">从校园到职场，<br>每一步都在积累。</h2>
+      </div>
+
+      <!-- Timeline -->
+      <div class="timeline">
+        <!-- Internship -->
+        <div class="timeline-item fade-up">
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-meta">
+              <span class="timeline-date">2025.06 — 2025.08</span>
+              <span class="timeline-badge">实习</span>
+            </div>
+            <h3 class="timeline-title">区域运营助理</h3>
+            <p class="timeline-company">广州绿言教育公司</p>
+            <ul class="timeline-details">
+              <li><strong>社群运营：</strong>独立运营 1500+ 用户社群，制定精细化 SOP 话术及内容分享策略，有效提升社群活跃度与用户粘性</li>
+              <li><strong>转化增长：</strong>深度配合销售节点，策划课程预热与专题答疑活动，单月成功转化付费用户 112 人</li>
+              <li><strong>数据驱动：</strong>定期复盘活动数据与用户反馈，分析行为数据，持续优化运营策略</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Campus - News Center -->
+        <div class="timeline-item fade-up">
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-meta">
+              <span class="timeline-date">2023 — 至今</span>
+              <span class="timeline-badge">校园</span>
+            </div>
+            <h3 class="timeline-title">新闻中心编辑 / 招生直播策划</h3>
+            <p class="timeline-company">汕头大学</p>
+            <ul class="timeline-details">
+              <li><strong>内容创作：</strong>负责官方公众号选题策划、采编撰稿，累计产出原创内容 12 篇，最高阅读量突破 10 万+，作品登上"学习强国"首页推荐</li>
+              <li><strong>直播策划：</strong>全案策划招生系列直播，负责脚本撰写、互动设计及现场统筹，累计观看 30 万+ 人次，为社群引流精准用户 5000+</li>
+              <li><strong>深度报道：</strong>挖掘学院优秀师生及科研团队故事，产出深度稿件多篇，其中 3 篇被省级权威媒体《南方日报》转载</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="timeline-item fade-up">
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-meta">
+              <span class="timeline-date">2023.09 — 2027.06</span>
+              <span class="timeline-badge">教育</span>
+            </div>
+            <h3 class="timeline-title">智能建造 · 本科</h3>
+            <p class="timeline-company">汕头大学</p>
+            <ul class="timeline-details">
+              <li><strong>主修课程：</strong>微积分、线性代数、概率论与数理统计、程序设计基础、工程制图与 CAD、数字图像处理与机器视觉</li>
+              <li><strong>在校荣誉：</strong>校级奖学金、高校影视作品新闻类典范作品、大学校园媒体大赛二等奖、优秀学生干部、优秀学生记者</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">作品集</span>
+        <h2 class="section-title fade-up">精选项目，<br>每一个都是实战。</h2>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card fade-up">
+          <div class="project-image" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)">
+            <div class="project-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-tag">内容运营</span>
+            <h3>汕头大学官方公众号</h3>
+            <p>负责日常选题策划与采编撰稿，创新使用 SVG 交互排版，单篇阅读量突破 10 万+，作品登上教育部"学习强国"平台首页推荐。</p>
+          </div>
+        </div>
+
+        <div class="project-card fade-up" style="animation-delay: 0.15s">
+          <div class="project-image" style="background: linear-gradient(135deg, #2d1b69 0%, #11998e 100%)">
+            <div class="project-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-tag">直播策划</span>
+            <h3>招生系列直播全案</h3>
+            <p>从脚本撰写、互动设计到现场统筹的全案策划，联动多渠道预热推广，累计观看 30 万+ 人次，单场最高同时在线 2000+ 人。</p>
+          </div>
+        </div>
+
+        <div class="project-card fade-up" style="animation-delay: 0.3s">
+          <div class="project-image" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #2980b9 100%)">
+            <div class="project-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-tag">社群运营</span>
+            <h3>高粘性用户社群运营</h3>
+            <p>独立运营 1500+ 用户社群，制定精细化 SOP 话术与内容分享策略，配合销售节点策划专题活动，单月转化付费用户 112 人。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section section-alt" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">技能</span>
+        <h2 class="section-title fade-up">工具与能力，<br>驱动每一场增长。</h2>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-category fade-up">
+          <h3 class="skill-category-title">运营与内容</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">社群运营</span>
+            <span class="skill-tag">内容策划</span>
+            <span class="skill-tag">用户增长</span>
+            <span class="skill-tag">数据分析</span>
+            <span class="skill-tag">直播策划</span>
+            <span class="skill-tag">活动策划</span>
+            <span class="skill-tag">转化优化</span>
+          </div>
+        </div>
+        <div class="skill-category fade-up" style="animation-delay: 0.1s">
+          <h3 class="skill-category-title">技术工具</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Excel</span>
+            <span class="skill-tag">LLM 工具</span>
+            <span class="skill-tag">Photoshop</span>
+            <span class="skill-tag">Premiere Pro</span>
+            <span class="skill-tag">CAD</span>
+          </div>
+        </div>
+        <div class="skill-category fade-up" style="animation-delay: 0.2s">
+          <h3 class="skill-category-title">语言能力</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">英语 CET-4</span>
+            <span class="skill-tag">普通话</span>
+            <span class="skill-tag">粤语</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">联系</span>
+        <h2 class="section-title fade-up">期待与你<br>产生连接。</h2>
+      </div>
+
+      <div class="contact-grid">
+        <a href="mailto:3396479752@qq.com" class="contact-card fade-up">
+          <div class="contact-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact-label">邮箱</div>
+            <div class="contact-value">3396479752@qq.com</div>
+          </div>
+        </a>
+        <a href="tel:18938227983" class="contact-card fade-up" style="animation-delay: 0.1s">
+          <div class="contact-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact-label">电话</div>
+            <div class="contact-value">189 3822 7983</div>
+          </div>
+        </a>
+        <div class="contact-card fade-up" style="animation-delay: 0.2s">
+          <div class="contact-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact-label">微信</div>
+            <div class="contact-value">Falcon374688</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-text">&copy; 2026 邹俊锋. All rights reserved.</p>
+        <p class="footer-text footer-sub">Built with care.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
