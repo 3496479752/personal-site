@@ -572,18 +572,19 @@
       particles.forEach((p) => p.update(heroMouseX, heroMouseY));
       particles.forEach((p) => p.draw());
 
-      // Draw mouse particle glow
+      // Draw mouse particle - subtle elegant effect
       if (heroMouseX !== undefined) {
-        // Large outer glow
-        ctx.beginPath();
-        ctx.arc(heroMouseX, heroMouseY, 100, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(99, 102, 241, 0.04)';
-        ctx.fill();
-        // Inner glow
-        ctx.beginPath();
-        ctx.arc(heroMouseX, heroMouseY, 40, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(99, 102, 241, 0.06)';
-        ctx.fill();
+        // Soft ripple rings
+        const time = Date.now() * 0.002;
+        for (let r = 0; r < 3; r++) {
+          const radius = 20 + r * 25 + Math.sin(time + r) * 8;
+          const alpha = 0.06 - r * 0.015;
+          ctx.beginPath();
+          ctx.arc(heroMouseX, heroMouseY, radius, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(99, 102, 241, ${alpha})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
       }
 
       animId = requestAnimationFrame(animate);
@@ -885,19 +886,19 @@
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
-      // Add trail points
-      for (let i = 0; i < 3; i++) {
+      // Add trail points - fewer, more elegant
+      for (let i = 0; i < 1; i++) {
         trails.push({
-          x: x + (Math.random() - 0.5) * 20,
-          y: y + (Math.random() - 0.5) * 20,
-          size: Math.random() * 4 + 2,
+          x: x + (Math.random() - 0.5) * 10,
+          y: y + (Math.random() - 0.5) * 10,
+          size: Math.random() * 3 + 1,
           life: 1,
-          decay: 0.015 + Math.random() * 0.01,
-          hue: 240 + Math.random() * 60,
-          vx: (Math.random() - 0.5) * 2,
-          vy: (Math.random() - 0.5) * 2,
+          decay: 0.025 + Math.random() * 0.015,
+          hue: 240 + Math.random() * 40,
+          vx: (Math.random() - 0.5) * 1,
+          vy: (Math.random() - 0.5) * 1 - 0.5,
           rotation: Math.random() * Math.PI * 2,
-          rotSpeed: (Math.random() - 0.5) * 0.1
+          rotSpeed: (Math.random() - 0.5) * 0.05
         });
       }
     });
@@ -908,8 +909,8 @@
       trails = trails.filter(t => t.life > 0);
 
       // Limit trail count
-      if (trails.length > 150) {
-        trails = trails.slice(-150);
+      if (trails.length > 60) {
+        trails = trails.slice(-60);
       }
 
       trails.forEach(t => {
@@ -921,21 +922,12 @@
         ctx.save();
         ctx.translate(t.x, t.y);
         ctx.rotate(t.rotation);
-        ctx.globalAlpha = t.life * 0.6;
+        ctx.globalAlpha = t.life * 0.4;
 
-        // Draw rotating diamond shape
+        // Draw subtle circle
         ctx.beginPath();
-        ctx.moveTo(0, -t.size);
-        ctx.lineTo(t.size, 0);
-        ctx.lineTo(0, t.size);
-        ctx.lineTo(-t.size, 0);
-        ctx.closePath();
-        ctx.fillStyle = `hsla(${t.hue}, 70%, 65%, 0.5)`;
-        ctx.fill();
-
-        // Glow
-        ctx.shadowColor = `hsla(${t.hue}, 70%, 65%, 0.3)`;
-        ctx.shadowBlur = 10;
+        ctx.arc(0, 0, t.size, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${t.hue}, 60%, 70%, 0.4)`;
         ctx.fill();
 
         ctx.restore();
