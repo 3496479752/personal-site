@@ -475,7 +475,7 @@
         this.speedX = (Math.random() - 0.5) * 0.4;
         this.speedY = (Math.random() - 0.5) * 0.4;
         this.opacity = Math.random() * 0.4 + 0.1;
-        this.hue = Math.random() > 0.7 ? 145 : 210; // blue or green
+        this.hue = Math.random() > 0.5 ? 240 : 270; // indigo or purple
       }
       update(mx, my) {
         if (this.isMouse) {
@@ -547,7 +547,7 @@
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             const hue = particles[i].hue;
-            ctx.strokeStyle = `hsla(${hue}, 70%, 55%, ${0.08 * (1 - dist / 140)})`;
+            ctx.strokeStyle = `hsla(240, 70%, 60%, ${0.08 * (1 - dist / 140)})`;
             ctx.lineWidth = 0.6;
             ctx.stroke();
           }

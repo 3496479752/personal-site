@@ -13,17 +13,17 @@
 }
 
 :root {
-  --bg: #fafafa;
-  --bg-alt: #f5f5f7;
-  --text: #1d1d1f;
-  --text-secondary: #6e6e73;
-  --text-tertiary: #86868b;
-  --accent: #0071e3;
-  --accent-hover: #0077ed;
-  --border: rgba(0, 0, 0, 0.08);
-  --card-bg: #ffffff;
-  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  --card-shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --bg: #f8f8fa;
+  --bg-alt: #f0f0f4;
+  --text: #1a1a2e;
+  --text-secondary: #5a5a72;
+  --text-tertiary: #8888a0;
+  --accent: #6366f1;
+  --accent-hover: #818cf8;
+  --border: rgba(100, 100, 140, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.72);
+  --card-shadow: 0 2px 16px rgba(100, 100, 140, 0.06);
+  --card-shadow-hover: 0 12px 40px rgba(100, 100, 140, 0.12);
   --radius: 20px;
   --radius-sm: 12px;
   --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -57,63 +57,63 @@ body {
   z-index: -10;
   overflow: hidden;
   pointer-events: none;
+  background: linear-gradient(135deg, #f8f8fa 0%, #eeeef4 30%, #f4f0fa 60%, #f0f4f8 100%);
 }
 
 .mesh-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.45;
+  filter: blur(100px);
+  opacity: 0.5;
   animation: meshFloat 20s ease-in-out infinite;
   mix-blend-mode: multiply;
 }
 
 .mesh-blob:nth-child(1) {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(0, 113, 227, 0.35) 0%, rgba(0, 113, 227, 0) 70%);
-  top: -10%;
-  left: -5%;
-  animation-duration: 25s;
-  animation-delay: 0s;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, rgba(99, 102, 241, 0) 70%);
+  top: -15%;
+  left: -10%;
+  animation-duration: 28s;
 }
 
 .mesh-blob:nth-child(2) {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(52, 199, 89, 0.3) 0%, rgba(52, 199, 89, 0) 70%);
-  top: 30%;
-  right: -10%;
-  animation-duration: 30s;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, rgba(168, 85, 247, 0) 70%);
+  top: 25%;
+  right: -8%;
+  animation-duration: 32s;
   animation-delay: -5s;
 }
 
 .mesh-blob:nth-child(3) {
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(255, 149, 0, 0.25) 0%, rgba(255, 149, 0, 0) 70%);
-  bottom: -5%;
-  left: 20%;
-  animation-duration: 22s;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.12) 0%, rgba(236, 72, 153, 0) 70%);
+  bottom: -10%;
+  left: 15%;
+  animation-duration: 25s;
   animation-delay: -10s;
 }
 
 .mesh-blob:nth-child(4) {
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, rgba(175, 82, 222, 0.25) 0%, rgba(175, 82, 222, 0) 70%);
-  top: 60%;
-  left: 60%;
-  animation-duration: 28s;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0) 70%);
+  top: 55%;
+  left: 55%;
+  animation-duration: 30s;
   animation-delay: -15s;
 }
 
 .mesh-blob:nth-child(5) {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(255, 55, 95, 0.2) 0%, rgba(255, 55, 95, 0) 70%);
-  top: 10%;
-  left: 50%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0) 70%);
+  top: 5%;
+  left: 45%;
   animation-duration: 35s;
   animation-delay: -8s;
 }
@@ -135,8 +135,8 @@ body {
   z-index: -9;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    linear-gradient(rgba(100, 100, 140, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100, 100, 140, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 70%);
   -webkit-mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 70%);
@@ -156,7 +156,7 @@ body {
 
 .geo-shape {
   position: absolute;
-  border: 1.5px solid rgba(0, 113, 227, 0.08);
+  border: 1.5px solid rgba(99, 102, 241, 0.06);
   animation: geoSpin 30s linear infinite;
 }
 
@@ -167,7 +167,7 @@ body {
   top: 15%;
   right: 8%;
   animation-duration: 35s;
-  border-color: rgba(0, 113, 227, 0.06);
+  border-color: rgba(99, 102, 241, 0.05);
 }
 
 .geo-shape:nth-child(2) {
@@ -178,7 +178,7 @@ body {
   left: 5%;
   animation-duration: 25s;
   animation-direction: reverse;
-  border-color: rgba(52, 199, 89, 0.06);
+  border-color: rgba(168, 85, 247, 0.05);
 }
 
 .geo-shape:nth-child(3) {
@@ -188,7 +188,7 @@ body {
   top: 55%;
   right: 15%;
   animation-duration: 40s;
-  border-color: rgba(255, 149, 0, 0.06);
+  border-color: rgba(236, 72, 153, 0.05);
   border-radius: 8px;
 }
 
@@ -200,7 +200,7 @@ body {
   left: 40%;
   animation-duration: 32s;
   animation-direction: reverse;
-  border-color: rgba(175, 82, 222, 0.05);
+  border-color: rgba(59, 130, 246, 0.04);
 }
 
 @keyframes geoSpin {
@@ -308,7 +308,7 @@ img {
 }
 
 .nav.scrolled {
-  background: rgba(250, 250, 250, 0.72);
+  background: rgba(248, 248, 250, 0.72);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid var(--border);
@@ -419,7 +419,7 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(250, 250, 250, 0.95);
+  background: rgba(248, 248, 250, 0.92);
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
   z-index: 9999;
@@ -506,7 +506,7 @@ img {
 }
 
 .character-main {
-  box-shadow: 0 20px 60px rgba(0, 113, 227, 0.15), 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2), 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .character-glow {
@@ -517,7 +517,7 @@ img {
   width: 120%;
   height: 120%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 113, 227, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
   filter: blur(40px);
   z-index: 0;
   animation: glowPulse 4s ease-in-out infinite;
@@ -542,7 +542,7 @@ img {
 }
 
 .character-think {
-  box-shadow: 0 12px 40px rgba(175, 82, 222, 0.12), 0 6px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 40px rgba(168, 85, 247, 0.15), 0 6px 16px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
 }
 
@@ -569,7 +569,7 @@ img {
 }
 
 .character-wave {
-  box-shadow: 0 12px 40px rgba(52, 199, 89, 0.12), 0 6px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 40px rgba(16, 185, 129, 0.15), 0 6px 16px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
 }
 
@@ -588,9 +588,9 @@ img {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(ellipse at 30% 20%, rgba(0, 113, 227, 0.06) 0%, transparent 50%),
-              radial-gradient(ellipse at 70% 80%, rgba(52, 199, 89, 0.05) 0%, transparent 50%),
-              radial-gradient(ellipse at 50% 50%, rgba(175, 82, 222, 0.03) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 20% 30%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 70%, rgba(168, 85, 247, 0.06) 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 50%, rgba(236, 72, 153, 0.04) 0%, transparent 60%);
   animation: heroGradient 15s ease-in-out infinite alternate;
   pointer-events: none;
 }
@@ -783,7 +783,7 @@ img {
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 113, 227, 0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 70%);
   filter: blur(60px);
   pointer-events: none;
 }
@@ -796,7 +796,7 @@ img {
   width: 400px;
   height: 400px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(52, 199, 89, 0.04) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.05) 0%, transparent 70%);
   filter: blur(60px);
   pointer-events: none;
 }
@@ -832,6 +832,7 @@ img {
   height: 8px;
   border-radius: 50%;
   background: var(--accent);
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
   animation: pulse 2s ease-in-out infinite;
 }
 
