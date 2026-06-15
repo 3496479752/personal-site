@@ -615,6 +615,44 @@
     sections.forEach((section) => observer.observe(section));
   }
 
+  // ---- Character Float Animation ----
+  function setupCharacterFloat() {
+    const characters = document.querySelectorAll('.character-img');
+    characters.forEach((char, i) => {
+      // Add floating animation with different delays
+      char.style.animation = `characterFloat ${3 + i * 0.5}s ease-in-out ${i * 0.3}s infinite`;
+
+      // Parallax on mouse move
+      const parent = char.closest('.hero-character, .about-character, .contact-character');
+      if (parent) {
+        parent.addEventListener('mousemove', (e) => {
+          const rect = parent.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          char.style.transform = `translateY(${y * -10}px) rotateY(${x * 5}deg) rotateX(${y * -5}deg)`;
+        });
+        parent.addEventListener('mouseleave', () => {
+          char.style.transform = '';
+          char.style.transition = 'transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+          setTimeout(() => { char.style.transition = ''; }, 600);
+        });
+      }
+    });
+
+    // Add float keyframes
+    if (!document.getElementById('char-float-style')) {
+      const style = document.createElement('style');
+      style.id = 'char-float-style';
+      style.textContent = `
+        @keyframes characterFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-12px); }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  }
+
   // ---- Init ----
   document.addEventListener('DOMContentLoaded', function () {
     setupScrollReveal();
@@ -623,6 +661,7 @@
     setupHeroParallax();
     setupTextScramble();
     setupMeshParallax();
+    setupCharacterFloat();
     setupHeroTilt();
     setupSkillTags();
     setupTimelineStagger();
