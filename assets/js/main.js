@@ -516,8 +516,8 @@
       }
     }
 
-    // Create particles
-    const count = Math.min(80, Math.floor(canvas.width * canvas.height / 12000));
+    // Create particles - much more dense
+    const count = Math.min(200, Math.floor(canvas.width * canvas.height / 4000));
     for (let i = 0; i < count; i++) {
       particles.push(new Particle());
     }
@@ -542,13 +542,13 @@
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 140) {
+          if (dist < 160) {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             const hue = particles[i].hue;
-            ctx.strokeStyle = `hsla(240, 70%, 60%, ${0.08 * (1 - dist / 140)})`;
-            ctx.lineWidth = 0.6;
+            ctx.strokeStyle = `hsla(240, 70%, 60%, ${0.12 * (1 - dist / 160)})`;
+            ctx.lineWidth = 0.7;
             ctx.stroke();
           }
         }
@@ -558,12 +558,12 @@
           const dx = particles[i].x - heroMouseX;
           const dy = particles[i].y - heroMouseY;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 180) {
+          if (dist < 220) {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(heroMouseX, heroMouseY);
-            ctx.strokeStyle = `rgba(0, 113, 227, ${0.12 * (1 - dist / 180)})`;
-            ctx.lineWidth = 0.8;
+            ctx.strokeStyle = `rgba(99, 102, 241, ${0.18 * (1 - dist / 220)})`;
+            ctx.lineWidth = 1;
             ctx.stroke();
           }
         }
@@ -574,9 +574,15 @@
 
       // Draw mouse particle glow
       if (heroMouseX !== undefined) {
+        // Large outer glow
         ctx.beginPath();
-        ctx.arc(heroMouseX, heroMouseY, 60, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(0, 113, 227, 0.03)';
+        ctx.arc(heroMouseX, heroMouseY, 100, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(99, 102, 241, 0.04)';
+        ctx.fill();
+        // Inner glow
+        ctx.beginPath();
+        ctx.arc(heroMouseX, heroMouseY, 40, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(99, 102, 241, 0.06)';
         ctx.fill();
       }
 
@@ -790,6 +796,240 @@
     }
   }
 
+  // ---- Rotating Orbs Background ----
+  function setupRotatingOrbs() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+
+    const orbContainer = document.createElement('div');
+    orbContainer.className = 'rotating-orbs';
+    hero.appendChild(orbContainer);
+
+    // Create multiple rotating orbs
+    for (let i = 0; i < 6; i++) {
+      const orb = document.createElement('div');
+      orb.className = 'rotating-orb';
+      orb.style.cssText = `
+        position: absolute;
+        border-radius: 50%;
+        border: 1.5px solid;
+        animation: orbRotate ${15 + i * 5}s linear infinite ${i % 2 === 0 ? '' : 'reverse'};
+        pointer-events: none;
+        z-index: 0;
+      `;
+      const size = 200 + i * 120;
+      orb.style.width = size + 'px';
+      orb.style.height = size + 'px';
+      orb.style.top = `calc(50% - ${size/2}px)`;
+      orb.style.left = `calc(50% - ${size/2}px)`;
+
+      const colors = [
+        'rgba(99, 102, 241, 0.06)',
+        'rgba(168, 85, 247, 0.05)',
+        'rgba(236, 72, 153, 0.04)',
+        'rgba(59, 130, 246, 0.05)',
+        'rgba(16, 185, 129, 0.04)',
+        'rgba(245, 158, 11, 0.03)'
+      ];
+      orb.style.borderColor = colors[i];
+
+      // Add dash pattern
+      orb.style.borderStyle = i % 2 === 0 ? 'dashed' : 'dotted';
+
+      orbContainer.appendChild(orb);
+    }
+
+    // Add styles
+    if (!document.getElementById('orb-style')) {
+      const style = document.createElement('style');
+      style.id = 'orb-style';
+      style.textContent = `
+        .rotating-orbs {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          pointer-events: none;
+        }
+        @keyframes orbRotate {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  }
+
+  // ---- Mouse Trail Effect ----
+  function setupMouseTrail() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    if (window.innerWidth < 768) return; // Skip on mobile
+
+    const trailCanvas = document.createElement('canvas');
+    trailCanvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:2;';
+    hero.appendChild(trailCanvas);
+
+    const ctx = trailCanvas.getContext('2d');
+    let trails = [];
+    let animId;
+
+    function resize() {
+      trailCanvas.width = hero.offsetWidth;
+      trailCanvas.height = hero.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      // Add trail points
+      for (let i = 0; i < 3; i++) {
+        trails.push({
+          x: x + (Math.random() - 0.5) * 20,
+          y: y + (Math.random() - 0.5) * 20,
+          size: Math.random() * 4 + 2,
+          life: 1,
+          decay: 0.015 + Math.random() * 0.01,
+          hue: 240 + Math.random() * 60,
+          vx: (Math.random() - 0.5) * 2,
+          vy: (Math.random() - 0.5) * 2,
+          rotation: Math.random() * Math.PI * 2,
+          rotSpeed: (Math.random() - 0.5) * 0.1
+        });
+      }
+    });
+
+    function animate() {
+      ctx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+
+      trails = trails.filter(t => t.life > 0);
+
+      // Limit trail count
+      if (trails.length > 150) {
+        trails = trails.slice(-150);
+      }
+
+      trails.forEach(t => {
+        t.x += t.vx;
+        t.y += t.vy;
+        t.life -= t.decay;
+        t.rotation += t.rotSpeed;
+
+        ctx.save();
+        ctx.translate(t.x, t.y);
+        ctx.rotate(t.rotation);
+        ctx.globalAlpha = t.life * 0.6;
+
+        // Draw rotating diamond shape
+        ctx.beginPath();
+        ctx.moveTo(0, -t.size);
+        ctx.lineTo(t.size, 0);
+        ctx.lineTo(0, t.size);
+        ctx.lineTo(-t.size, 0);
+        ctx.closePath();
+        ctx.fillStyle = `hsla(${t.hue}, 70%, 65%, 0.5)`;
+        ctx.fill();
+
+        // Glow
+        ctx.shadowColor = `hsla(${t.hue}, 70%, 65%, 0.3)`;
+        ctx.shadowBlur = 10;
+        ctx.fill();
+
+        ctx.restore();
+      });
+
+      animId = requestAnimationFrame(animate);
+    }
+    animate();
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) cancelAnimationFrame(animId);
+      else animate();
+    });
+  }
+
+  // ---- Floating Rings Around Character ----
+  function setupCharacterRings() {
+    const heroChar = document.querySelector('.hero-character');
+    if (!heroChar) return;
+
+    for (let i = 0; i < 3; i++) {
+      const ring = document.createElement('div');
+      ring.className = 'character-ring';
+      const size = 380 + i * 60;
+      ring.style.cssText = `
+        position: absolute;
+        width: ${size}px;
+        height: ${size}px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid rgba(99, 102, 241, ${0.08 - i * 0.02});
+        border-radius: 50%;
+        animation: ringRotate ${20 + i * 10}s linear infinite ${i % 2 === 0 ? '' : 'reverse'};
+        pointer-events: none;
+      `;
+
+      // Add a dot on the ring
+      const dot = document.createElement('div');
+      dot.style.cssText = `
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: rgba(99, 102, 241, ${0.3 - i * 0.08});
+        border-radius: 50%;
+        top: -3px;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+      `;
+      ring.appendChild(dot);
+      heroChar.appendChild(ring);
+    }
+
+    if (!document.getElementById('ring-style')) {
+      const style = document.createElement('style');
+      style.id = 'ring-style';
+      style.textContent = `
+        .hero-character {
+          position: relative;
+        }
+        @keyframes ringRotate {
+          from { transform: translate(-50%, -50%) rotate(0deg); }
+          to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  }
+
+  // ---- Interactive Background Warp on Scroll ----
+  function setupScrollWarp() {
+    const blobs = document.querySelectorAll('.mesh-blob');
+    const shapes = document.querySelectorAll('.geo-shape');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollY / maxScroll;
+
+      blobs.forEach((blob, i) => {
+        const scale = 1 + Math.sin(progress * Math.PI * 2 + i) * 0.15;
+        const rotate = progress * 360 * (i % 2 === 0 ? 1 : -1);
+        blob.style.transform = `scale(${scale}) rotate(${rotate}deg)`;
+      });
+
+      shapes.forEach((shape, i) => {
+        const rotate = progress * 720 * (i % 2 === 0 ? 1 : -1);
+        const translateY = Math.sin(progress * Math.PI * 4 + i) * 30;
+        shape.style.transform = `rotate(${rotate}deg) translateY(${translateY}px)`;
+      });
+    }, { passive: true });
+  }
+
   // ---- Character Float Animation ----
   function setupCharacterFloat() {
     const characters = document.querySelectorAll('.character-img');
@@ -838,6 +1078,10 @@
     setupMeshParallax();
     setupCharacterFloat();
     setupGalleryLightbox();
+    setupRotatingOrbs();
+    setupMouseTrail();
+    setupCharacterRings();
+    setupScrollWarp();
     setupHeroTilt();
     setupSkillTags();
     setupTimelineStagger();
