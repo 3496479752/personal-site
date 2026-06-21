@@ -1284,6 +1284,154 @@ img {
   transform: translateY(-2px);
 }
 
+/* ---- About Intro ---- */
+.about-intro {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 560px;
+  margin-top: 20px;
+}
+
+/* ---- Honors Section ---- */
+.honors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.honor-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  border: 1px solid var(--border);
+  text-align: center;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.honor-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), #818cf8);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.honor-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-6px);
+  border-color: rgba(99, 102, 241, 0.15);
+}
+
+.honor-card:hover::before {
+  opacity: 1;
+}
+
+.honor-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: rgba(99, 102, 241, 0.08);
+  color: var(--accent);
+  transition: all var(--transition);
+}
+
+.honor-card:hover .honor-icon {
+  background: var(--accent);
+  color: #fff;
+  transform: scale(1.08);
+}
+
+.honor-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.honor-desc {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  line-height: 1.5;
+}
+
+/* ---- Competency Section ---- */
+.competency-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.competency-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 36px 32px;
+  border: 1px solid var(--border);
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.competency-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.04) 0%, transparent 70%);
+  transform: translate(30%, -30%);
+  transition: all var(--transition);
+}
+
+.competency-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-6px);
+  border-color: rgba(99, 102, 241, 0.12);
+}
+
+.competency-card:hover::after {
+  transform: translate(20%, -20%) scale(1.3);
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+}
+
+.competency-number {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0.5;
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+  font-family: 'Inter', monospace;
+}
+
+.competency-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.competency-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+
 /* ---- Contact ---- */
 .contact-grid {
   display: grid;
@@ -1487,6 +1635,41 @@ img {
 
   .about-number {
     font-size: 36px;
+  }
+
+  .about-intro {
+    font-size: 15px;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .honors-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .honor-card {
+    padding: 24px 16px;
+  }
+
+  .honor-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 12px;
+  }
+
+  .honor-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .competency-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .competency-card {
+    padding: 28px 24px;
   }
 }
 

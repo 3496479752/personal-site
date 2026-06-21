@@ -168,7 +168,7 @@
 
   // ---- Magnetic Hover for Cards ----
   function setupMagneticCards() {
-    const cards = document.querySelectorAll('.project-card, .about-card, .contact-card');
+    const cards = document.querySelectorAll('.project-card, .about-card, .contact-card, .honor-card, .competency-card');
     cards.forEach((card) => {
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
@@ -351,7 +351,7 @@
 
   // ---- Card Spotlight Effect ----
   function setupSpotlight() {
-    const cards = document.querySelectorAll('.project-card, .about-card, .skill-category');
+    const cards = document.querySelectorAll('.project-card, .about-card, .skill-category, .honor-card, .competency-card');
     cards.forEach((card) => {
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
