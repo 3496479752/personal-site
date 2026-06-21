@@ -1148,6 +1148,32 @@ img {
   line-height: 1.6;
 }
 
+.project-link {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  margin-top: 12px;
+  transition: all var(--transition);
+}
+
+.project-card:hover .project-link {
+  color: var(--accent-hover);
+  transform: translateX(4px);
+}
+
+a.project-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
+
+a.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--card-shadow-hover);
+}
+
 /* ---- Gallery ---- */
 .gallery-grid {
   display: grid;
